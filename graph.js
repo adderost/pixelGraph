@@ -252,11 +252,12 @@
 	window.scaledPixelGraph = new scaledPixelGraph();
 })();
 
+/* HOW TO USE
+Initialize graph by calling scaledPixelGraph.setup()
 
-//REMOVE BEFORE RELEASE, SHOULD BE CALLED BY MAIN SCRIPT
+Example: 
 var element = document.getElementById('graphContainer');
 var pixelScale = 4;
-var data = [ [ [113],[118],[213],[178],[166] ] , [ [160],[175],[215],[201],[160] ] , [ [189],[188],[187],[186],[185] ] ];
-var customStyle = {};
+var data = [ [ [1],[2],[3],[4],[5] ] , [ [3],[3],[2],[2],[3] ] , [ [5],[1],[2],[2],[4] ] ];
 
-scaledPixelGraph.setup(element, pixelScale, data, customStyle);
+scaledPixelGraph.setup(element, pixelScale, data);
