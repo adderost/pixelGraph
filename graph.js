@@ -92,7 +92,7 @@
 			var height = self.offScreenOriginal.height;
 
 			var padX = Math.round(width * (self.style.pad/100));
-			var padY = Math.round(width * (self.style.pad/100));
+			var padY = Math.round(height * (self.style.pad/100));
 
 			var labelSize = Math.round(height * (self.style.labelFontSize/100) );
 
