@@ -1,20 +1,40 @@
 <!doctype html>
-
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='se' lang='se'>
+<html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Stairway to the graphs</title>
-	<link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">	
+	<title>pixelGraph Example</title>
 </head>
 <body>
 	<div id="graphContainer" style="width:1024px; height:768px; display:block; max-width:100%;"></div>
-
 	<script src="graph.js" ></script>
+	<script>
+		(function() {
+			var container = document.getElementById('graphContainer');	//The element where we are putting the graph
+			var pixelScale = 4;											//How much are we scaling up the pixels. A value of 4 will make every pixel 4x4 pixels
+			var data = [ 												//Three series of different data
+							[ [15],[21],[32],[42],[54] ], 
+							[ [31],[32],[23],[24],[35] ], 
+							[ [53],[13],[22],[22],[43] ] 
+						];
+			var customStyle = {												//Custom style is optional, these are the default values
+				backgroundColor: "#ffffff",									//Background color of the graph
+				dataLineColor: ["#ff0000", "#00ff00", "#0000ff"],			//Color of the linegraph. Different colors for different series
+				dataLineSize: 1,											//How wide is the line. In original pixels
+				dataDotColor: ["#ff0000", "#00ff00", "#0000ff"],			//The color of the datapoint dots in the graph. Different colors for different series
+				dataDotSize: 4,												//Size of the datapoint dots. In original pixels
+				graphAxisLineColor: "#aaaaaa",								//Color of the axis lines in the graph
+				graphHelperLineColor: "#cccccc",							//Color of the helper lines in the graph
+				graphPaintIterations: 100,									//How many iterations should the lines be drawn, higher values means more crisp result
+				labelColor: "#000",											//Color of the value labels on the Y-axis. Set to same as background to hide labels
+				labelOffset: 0.85,											//How close to the Y-axis is the value label. 1 is touching, 0 is offscreen to the left
+				labelFontSize: 5,											//Font size of the value labels. In original pixels
+				pad: 10,													//Percentage of width/height the graph should be padded on the X/Y-axes
+				yRangeStartsOnZero: false									//Should the graph Y-axis start on zero or be truncated down to the lowest data value?
+			}
+
+			scaledPixelGraph.setup(container, pixelScale, data, customStyle);			//Initializes the graph
+
+		})();
+	</script>
 </body>
 </html>

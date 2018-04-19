@@ -251,13 +251,3 @@
 	//Save a reference of the object in the global scope
 	window.scaledPixelGraph = new scaledPixelGraph();
 })();
-
-/* HOW TO USE
-Initialize graph by calling scaledPixelGraph.setup()
-
-Example: 
-var element = document.getElementById('graphContainer');
-var pixelScale = 4;
-var data = [ [ [1],[2],[3],[4],[5] ] , [ [3],[3],[2],[2],[3] ] , [ [5],[1],[2],[2],[4] ] ];
-
-scaledPixelGraph.setup(element, pixelScale, data);
