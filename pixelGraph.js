@@ -1,5 +1,5 @@
 (function(){
-	var scaledPixelGraph = function(){
+	var pixelGraph = function(){
 		//The variables we're working with
 		var onScreenCanvas, offScreenBuffer, offScreenOriginal;
 		var visibleCtx, bufferCtx, originalCtx;
@@ -249,5 +249,5 @@
 		}
 	};
 	//Save a reference of the object in the global scope
-	window.scaledPixelGraph = new scaledPixelGraph();
+	window.pixelGraph = new pixelGraph();
 })();
