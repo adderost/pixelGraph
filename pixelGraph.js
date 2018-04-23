@@ -61,7 +61,7 @@
 			self.offScreenBuffer.width = self.onScreenCanvas.width;
 			self.offScreenBuffer.height = self.onScreenCanvas.height;
 
-			//Set the offscreen scaled original to the pixelscale fraction of the visible canvas.
+			//Set the offscreen scaled original to the pixelScale fraction of the visible canvas.
 			self.offScreenOriginal.width = Math.round(self.offScreenBuffer.width/self.pixelScale);
 			self.offScreenOriginal.height = Math.round(self.offScreenBuffer.height/self.pixelScale);
 
@@ -227,17 +227,33 @@
 			var self = this;
 			//Set variables
 			var ctx = self.bufferCtx;
-			var imageData = self.originalCtx.getImageData(0,0,self.offScreenOriginal.width, self.offScreenOriginal.height);
 			var width = self.offScreenOriginal.width;
+			var height = self.offScreenOriginal.height;
+			var pixelScale = self.pixelScale;
+			var imageData = self.originalCtx.getImageData(0,0,self.offScreenOriginal.width, self.offScreenOriginal.height);
+
+			var newImageData = ctx.createImageData(width*pixelScale, height*pixelScale);
 
 			//Create scaled pixels on the offscren buffer for all pixels on the original
 			for (var i = 0; i < (imageData.data.length/4); i++ ){
 				var j = (i*4);
-				var fill = "rgb("+imageData.data[j]+","+imageData.data[j+1]+","+imageData.data[j+2]+")";
-				ctx.fillStyle=fill;
-				ctx.fillRect((i%width)*self.pixelScale, Math.floor(i/width)*self.pixelScale, self.pixelScale, self.pixelScale);
-			}
+				for(var pixelIterator = 0; pixelIterator<pixelScale; pixelIterator++){
+					var pointer = (j*pixelScale); //First multiply position with pixelScale
+						pointer += ((Math.floor(i/width)) * (width * (4 * pixelScale)) *(pixelScale-1) );	//Then add pixelscale for each row
+						pointer += pixelIterator*4;	//And then work with where we are in X-axis
+						
+					for(var innerIterator = 0; innerIterator<pixelScale; innerIterator++){
+						var innerPointer = pointer+innerIterator*width*4*pixelScale 		//And then we work with the Y-axis
 
+						newImageData.data[innerPointer] = imageData.data[j];				//RED
+						newImageData.data[innerPointer+1] = imageData.data[j+1];			//GREEN
+						newImageData.data[innerPointer+2] = imageData.data[j+2];			//BLUE
+						newImageData.data[innerPointer+3] = 255;							//ALPHA
+					}
+				}
+
+			}
+			ctx.putImageData(newImageData,0,0);
 		}
 
 		this.copyBufferToVisible = function(){
