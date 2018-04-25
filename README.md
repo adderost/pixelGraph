@@ -5,10 +5,10 @@ A js library to generate low res graphs on canvas and then scale them up while k
 ![An example of a pixelGraph](https://raw.githubusercontent.com/adderost/pixelGraph/master/example.png "An example of a pixelGraph")
 
 ## How to use
-Include pixelGraph.js in your website and call pixelGraph.setup().
+Include pixelGraph.js in your website and call pixelGraph().
 ### Syntax
 ```javascript
-pixelGraph.setup(container, pixelScale, data [, customStyle]);	
+pixelGraph(container, pixelScale, data [, customStyle]);	
 ```
 #### Parameters
 ##### container (Element)
