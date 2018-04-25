@@ -16,6 +16,7 @@
 			graphAxisLineColor: "#aaaaaa",
 			graphHelperLineColor: "#cccccc",
 			graphPaintIterations: 100,
+			labelRounding: 10,
 			labelColor: "#000",
 			labelOffset: 0.85,
 			labelFontSize: 5,
@@ -124,8 +125,8 @@
 				yValueRange -= padY;
 			}
 
-			max = (Math.ceil(max / 10) * 10) //Round max-value to nearest ten
-			min = (Math.floor(min / 10) * 10) //Round min-value to nearest ten
+			max = (Math.ceil(max / self.style.labelRounding) * self.style.labelRounding) //Round max-value to closest labelRounding
+			min = (Math.floor(min / self.style.labelRounding) * self.style.labelRounding) //Round min-value to closest labelRounding
 
 			//Find xStepSize
 			xStepSize = Math.round(xValueRange / maxDataPoints);

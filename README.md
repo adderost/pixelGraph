@@ -65,6 +65,10 @@ Color of the helper lines in the graph
 How many iterations should the lines be drawn, higher values means more crisp result
 
 
+##### labelRounding
+###### _Number (10)_
+When labeling the Y-axis, what multiple should the min and max values be rounded to?
+
 ##### labelColor
 ###### _String ("#000")_
 Color of the value labels on the Y-axis. Set to same as background to hide labels
