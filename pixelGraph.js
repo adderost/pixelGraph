@@ -48,6 +48,7 @@
 			//Make sure everything has the correct size. And keeps the correct size
 			self.resizeCanvases();
 			window.addEventListener('resize', function(){self.resizeCanvases();}, true);
+			return(self);
 		}
 
 		this.resizeCanvases = function(){
@@ -265,6 +266,10 @@
 			self.visibleCtx.drawImage(self.offScreenBuffer, 0, 0);
 		}
 	};
+
 	//Save a reference of the object in the global scope
-	window.pixelGraph = new pixelGraph();
+	window.pixelGraph = function(container, scale, data, customStyle = {}){
+		var pg = new pixelGraph();
+		return(pg.setup(container, scale, data, customStyle));
+	};
 })();
