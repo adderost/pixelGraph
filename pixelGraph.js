@@ -114,9 +114,11 @@
 			//Set max-values (And fuzzy them)
 			for(var i = 0; i<data.length; i++){
 				for(var j = 0; j<data[i].length; j++){
-					if(data[i][j][0] > max) max = data[i][j][0];
-					if(min == null) min = data[i][j][0];
-					else if(data[i][j][0] < min) min = data[i][j][0];
+					var datapoint = data[i][j];
+					if(Array.isArray(datapoint)) datapoint = datapoint[0];
+					if(datapoint > max) max = datapoint;
+					if(min == null) min = datapoint;
+					else if(datapoint < min) min = datapoint;
 				}
 				if(data[i].length>maxDataPoints) maxDataPoints = data[i].length;
 			}
@@ -197,7 +199,9 @@
 					ctx.beginPath();
 					for(i = 0; i<currentLineData.length; i++){
 						//Find the data point position and move x-value for next time
-						var dataPointPosition = {x: xPosition, y: padY+yValueRange - (Math.round(((currentLineData[i][0]-min) / (max-min))*yValueRange))}
+						var datapoint = currentLineData[i];
+						if(Array.isArray(datapoint)) datapoint = datapoint[0];
+						var dataPointPosition = {x: xPosition, y: padY+yValueRange - (Math.round(((datapoint-min) / (max-min))*yValueRange))}
 						xPosition += xStepSize;
 						//Draw the line
 						if(!lineStarted){
