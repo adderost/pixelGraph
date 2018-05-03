@@ -12,9 +12,9 @@
 			var container = document.getElementById('graphContainer');	//The element where we are putting the graph
 			var pixelScale = 4;											//How much are we scaling up the pixels. A value of 4 will make every pixel 4x4 pixels
 			var data = [ 												//Three series of different data
-							[ [15],[21],[32],[42],[54] ], 
+							[ [15,"Monday"],[21,"Tuesday"],[32,"Wednesday"],[42,"Thursday"],[54,"Friday"] ], 
 							[31,32,23,24,35], 
-							[ [53],[13],[22],[22],[43] ] 
+							[ [53,"1/1"],[13,"2/1"],[22,"3/1"],[22,"4/1"],[43,"5/1"] ] 
 						];
 			var customStyle = {												//Custom style is optional, these are the default values
 				backgroundColor: "#ffffff",									//Background color of the graph
@@ -27,7 +27,7 @@
 				graphPaintIterations: 100,									//How many iterations should the lines be drawn, higher values means more crisp result
 				labelRounding: 10,											//When labeling the Y-axis, what multiple should the min and max values be rounded to?
 				labelColor: "#000",											//Color of the value labels on the Y-axis. Set to same as background to hide labels
-				labelOffset: 0.85,											//How close to the Y-axis is the value label. 1 is touching, 0 is offscreen to the left
+				labelOffset: 0.9,											//How close to the Y-axis is the value label. 1 is touching, 0 is offscreen to the left
 				labelFontSize: 5,											//Font size of the value labels. In original pixels
 				pad: 10,													//Percentage of width/height the graph should be padded on the X/Y-axes
 				yRangeStartsOnZero: false									//Should the graph Y-axis start on zero or be truncated down to the lowest data value?

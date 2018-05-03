@@ -108,6 +108,8 @@
 			var min;
 			var maxDataPoints=0;
 
+			var dataPointLabels = Array();			//This is where we keep the labels for the x-axis
+
 			//opacity is 1
 			ctx.globalAlpha = 1;
 
@@ -115,7 +117,15 @@
 			for(var i = 0; i<data.length; i++){
 				for(var j = 0; j<data[i].length; j++){
 					var datapoint = data[i][j];
-					if(Array.isArray(datapoint)) datapoint = datapoint[0];
+					//Need to check if we're working with labels or not
+					if(Array.isArray(datapoint)){
+						if(datapoint.length>1){
+							if(dataPointLabels[j]) dataPointLabels[j] = dataPointLabels[j]+", "+datapoint[1];
+							else dataPointLabels[j] = datapoint[1];
+						}
+						//And normalize the datapoint data
+						datapoint = datapoint[0];
+					}
 					if(datapoint > max) max = datapoint;
 					if(min == null) min = datapoint;
 					else if(datapoint < min) min = datapoint;
@@ -220,11 +230,24 @@
 				}
 				//Next we add the point Labels
 				var xPosition = padX+Math.round(xStepSize/2);
+				
 				ctx.fillStyle = self.style.graphAxisLineColor;
 				for(i = 0; i<currentLineData.length; i++){
 					ctx.fillRect(xPosition, height-padY, 1, 3);
 					xPosition += xStepSize;
 				}
+			}
+			//Now we draw the X-axis labels
+			xPosition = padX+Math.round(xStepSize/2);
+			var row = 0;
+			ctx.textAlign = "center";
+			for(i = 0; i<dataPointLabels.length; i++){
+				var text = dataPointLabels[i];
+				ctx.fillStyle = self.style.labelColor;
+				var labelYPosition = height-padY+Math.round((1+row)*(self.style.labelFontSize+4));
+				ctx.fillText(text, xPosition, labelYPosition);
+				if(ctx.measureText(text).width > xStepSize) row = (row+1)%2;
+				xPosition += xStepSize;
 			}
 		}
 
