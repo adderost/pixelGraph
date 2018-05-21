@@ -142,7 +142,7 @@
 			min = (Math.floor(min / self.style.labelRounding) * self.style.labelRounding) //Round min-value to closest labelRounding
 
 			//Find xStepSize
-			xStepSize = Math.round(xValueRange / maxDataPoints);
+			xStepSize = Math.floor(xValueRange / maxDataPoints);
 
 			//Fill background
 			ctx.fillStyle = self.style.backgroundColor;	//backgroundColor
