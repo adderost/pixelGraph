@@ -186,13 +186,8 @@
 			ctx.fillText(min, (padX*self.style.labelOffset), padY+yValueRange+(Math.round(labelSize*0.4)), padY);
 			/**/
 
-			//Create baseLines
-			ctx.fillStyle = self.style.graphAxisLineColor;		//graphAxisLineColor
-			ctx.fillRect(padX, 0, 1, (height-padY));			//Vertical line from top to origo
-			ctx.fillRect(padX, (height-padY), (width-padX), 1); //Horizontal line from origo to right
 
 			//Paint the points and lines
-			
 			ctx.lineWidth = self.style.dataLineSize;
 
 			//We're painting the line a hundred times to make it crisp
@@ -237,6 +232,12 @@
 					xPosition += xStepSize;
 				}
 			}
+
+			//Create baseLines
+			ctx.fillStyle = self.style.graphAxisLineColor;		//graphAxisLineColor
+			ctx.fillRect(padX, 0, 1, (height-padY));			//Vertical line from top to origo
+			ctx.fillRect(padX, (height-padY), (width-padX), 1); //Horizontal line from origo to right
+
 			//Now we draw the X-axis labels
 			xPosition = padX+Math.round(xStepSize/2);
 			var row = 0;
