@@ -10,86 +10,30 @@ Include pixelGraph.js in your website and call pixelGraph().
 ```javascript
 pixelGraph(container, pixelScale, data [, customStyle]);	
 ```
-#### Parameters
-##### container (Element)
-The element where the graph should be displayed
 
-##### pixelScale (number)
-How much should the pixels be scaled up. A value of 2 means every pixel is 2x2 pixels big
-
-##### data (Array)
-An Array containing dataseries (Arrays) containing values (Arrays)
-
-##### customStyle (Object) _Optional_
-An object with key/value-pairs to change the default behaviour of the graphs look and feel. (See style section for options)
+| Parameter   | Type      | Description |
+| --------    | -----     | -----   |
+| container   | Element   | The element where the graph should be displayed |
+| pixelScale  | Number    | How much should the pixels be scaled up. A value of 2 means every pixel is 2x2 pixels big |
+| data        | Array     | An Array containing dataseries (Arrays) containing values (Arrays or Numbers) |
+| customStyle | Object    | An object with key/value-pairs to change the default of the graphs look and feel. (See style section for options) |
 
 ### customStyle available options
 
-##### backgroundColor
-###### _String ("#ffffff")_
-Background color of the graph
-
-
-##### dataLineColor
-###### _Array (["#ff0000", "#00ff00", "#0000ff"])_
-Color of the linegraph. Different colors for different series
-
-
-##### dataLineSize
-###### _Number (1)_
-How wide is the line. In original pixels
-
-
-##### dataDotColor
-###### _Array (["#ff0000", "#00ff00", "#0000ff"])_
-The color of the datapoint dots in the graph. Different colors for different series
-
-
-##### dataDotSize
-###### _Number (4)_
-Size of the datapoint dots. In original pixels
-
-
-##### graphAxisLineColor
-###### _String ("#aaaaaa")_
-Color of the axis lines in the graph
-
-
-##### graphHelperLineColor
-###### _String ("#cccccc")_
-Color of the helper lines in the graph
-
-
-##### graphPaintIterations
-###### _Number (100)_
-How many iterations should the lines be drawn, higher values means more crisp result
-
-
-##### labelRounding
-###### _Number (10)_
-When labeling the Y-axis, what multiple should the min and max values be rounded to?
-
-##### labelColor
-###### _String ("#000")_
-Color of the value labels on the Y-axis. Set to same as background to hide labels
-
-				
-##### labelOffset
-###### _Number (0.85)_
-How close to the Y-axis is the value label. 1 is touching, 0 is offscreen to the left
-
-
-##### labelFontSize
-###### _Number  (5)_
-Font size of the value labels. In original pixels
-
-
-##### pad
-###### _Number (10)_
-Percentage of width/height the graph should be padded on the X/Y-axes
-
-
-##### RangeStartsOnZero
-###### _Boolean (false)_
-Should the graph Y-axis start on zero or be truncated down to the lowest data value?
+| Option           | Type (Default)     | Description                   |
+| -------------    | -------------      | -----                         |
+| backgroundColor  | String ("#ffffff") | Background color of the graph |
+| dataLineColor    | Array (["#ff0000", "#00ff00", "#0000ff"]) | Color of the linegraph. Different colors for different series |
+| dataLineSize     | Number (1)         | How wide is the line. In original pixels |
+| dataDotColor     | Array (["#ff0000", "#00ff00", "#0000ff"]) | The color of the datapoint dots in the graph. Different colors for different series |
+| dataDotSize      | Number (4)         | Size of the datapoint dots. In original pixels |
+| graphAxisLineColor |String ("#aaaaaa")| Color of the axis lines in the graph |
+| graphHelperLineColor | String ("#cccccc") | Color of the helper lines in the graph |
+| graphPaintIterations | Number (100) | How many iterations should the lines be drawn, higher values means more crisp result |
+| labelRounding | Number (10) | When labeling the Y-axis, what multiple should the min and max values be rounded to? |
+| labelColor | String ("#000") | Color of the value labels on the Y-axis. Set to same as background to hide labels |
+| labelOffset | Number (0.85) | How close to the Y-axis is the value label. 1 is touching, 0 is offscreen to the left |
+| labelFontSize | Number  (5) | Font size of the value labels. In original pixels |
+| pad | Number (10) | Percentage of width/height the graph should be padded on the X/Y-axes |
+| RangeStartsOnZero | Boolean (false) | Should the graph Y-axis start on zero or be truncated down to the lowest data value? |
 
